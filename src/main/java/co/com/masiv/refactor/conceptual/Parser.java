@@ -6,7 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/** This class is thread safe. */
+/** This class is thread safe.
+ * @Date 07/03/2021 */
 public class Parser {
   private File file;
 
