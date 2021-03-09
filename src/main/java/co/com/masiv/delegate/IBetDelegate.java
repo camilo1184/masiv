@@ -7,4 +7,5 @@ public interface IBetDelegate {
 
   ResponseEntity<String> createBet(BetDto betDto);
 
+  ResponseEntity<Object> closeBets(String idRoulette);
 }

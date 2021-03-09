@@ -23,4 +23,10 @@ public class BetController implements IBetController {
     log.info("Header[user-id] :: {}", userId);
     return betDelegate.createBet(betDto);
   }
+
+  @Override
+  public ResponseEntity<Object> closeBets(String idRoulette) {
+    return betDelegate.closeBets(idRoulette);
+  }
+
 }

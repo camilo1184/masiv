@@ -1,7 +1,9 @@
 package co.com.masiv.service;
 
 import co.com.masiv.dto.RouletteDto;
+import co.com.masiv.model.Roulette;
 import java.util.List;
+import java.util.Optional;
 
 public interface IRouletteService {
 
@@ -11,5 +13,7 @@ public interface IRouletteService {
 
   boolean getStatusRoulette(String codeRoulette);
 
-  List getRouletteList();
+  List<Roulette> getRouletteList();
+
+  Optional<Roulette> closeRoulette(String idRoulette);
 }

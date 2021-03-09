@@ -2,8 +2,10 @@ package co.com.masiv.delegate.impl;
 
 import co.com.masiv.delegate.IRouletteDelegate;
 import co.com.masiv.dto.RouletteDto;
+import co.com.masiv.model.Roulette;
 import co.com.masiv.service.IRouletteService;
 import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -33,7 +35,13 @@ public class RouletteDelegate implements IRouletteDelegate {
   }
 
   @Override
-  public ResponseEntity<List> getRouletteList() {
+  public ResponseEntity<List<Roulette>> getRouletteList() {
     return new ResponseEntity<>(rouletteService.getRouletteList(), HttpStatus.OK);
   }
+
+  @Override
+  public Optional<Roulette> closeRoulette(String idRoulette) {
+    return rouletteService.closeRoulette(idRoulette);
+  }
+
 }

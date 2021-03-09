@@ -1,6 +1,7 @@
 package co.com.masiv.controller;
 
 import co.com.masiv.dto.RouletteDto;
+import co.com.masiv.model.Roulette;
 import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,6 @@ public interface IRouletteController {
   ResponseEntity<Boolean> activateRoulette(@PathVariable("id") String id);
 
   @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
-  ResponseEntity<List> getRouletteList();
+  ResponseEntity<List<Roulette>> getRouletteList();
 
 }

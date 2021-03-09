@@ -4,11 +4,14 @@ import co.com.masiv.dto.RouletteDto;
 import co.com.masiv.model.Roulette;
 import co.com.masiv.repository.RouletteRepository;
 import co.com.masiv.service.IRouletteService;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import lombok.AllArgsConstructor;
@@ -28,7 +31,8 @@ public class RouletteService implements IRouletteService {
         Roulette.builder()
             .name(rouletteDto.getTittle())
             .description(rouletteDto.getDescription())
-            .status(rouletteDto.isMoment())
+            .status(rouletteDto.isStatus())
+            .creationDate(new Date())
             .build();
     roulette = rouletteRepository.save(roulette);
 
@@ -40,6 +44,7 @@ public class RouletteService implements IRouletteService {
     Function<Roulette, Boolean> activateRoulette =
         t -> {
           t.setStatus(true);
+          t.setOpeningDate(new Date());
           rouletteRepository.save(t);
           return true;
         };
@@ -59,14 +64,28 @@ public class RouletteService implements IRouletteService {
     return StreamSupport.stream(
             Spliterators.spliteratorUnknownSize(iteratorRoulette, Spliterator.ORDERED), false)
         .map(
-            x -> {
-              return RouletteDto.builder()
-                  .code(x.getId())
-                  .description(x.getDescription())
-                  .moment(x.isStatus())
-                  .tittle(x.getName())
-                  .build();
-            })
+            x -> RouletteDto.builder()
+                .code(x.getId())
+                .description(x.getDescription())
+                .status(x.isStatus())
+                .tittle(x.getName())
+                .creationDate(x.getCreationDate())
+                .closing(x.getClosingDate())
+                .opening(x.getOpeningDate())
+                .build())
         .collect(Collectors.toList());
   }
+
+  @Override
+  public Optional<Roulette> closeRoulette(String idRoulette) {
+    UnaryOperator<Roulette> closeRoulette =
+        t -> {
+          t.setStatus(false);
+          t.setClosingDate(new Date());
+          return rouletteRepository.save(t);
+        };
+
+    return rouletteRepository.findById(idRoulette).map(closeRoulette);
+  }
+
 }

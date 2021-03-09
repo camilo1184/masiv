@@ -4,6 +4,7 @@ import co.com.masiv.constants.ResourceEndpoint;
 import co.com.masiv.controller.IRouletteController;
 import co.com.masiv.delegate.IRouletteDelegate;
 import co.com.masiv.dto.RouletteDto;
+import co.com.masiv.model.Roulette;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class RouletteController implements IRouletteController {
   }
 
   @Override
-  public ResponseEntity<List> getRouletteList() {
+  public ResponseEntity<List<Roulette>> getRouletteList() {
     return rouletteDelegate.getRouletteList();
   }
 }

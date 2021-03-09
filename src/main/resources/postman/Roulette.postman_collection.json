@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "aa6dca6b-2b7e-4df6-a104-f8a2360ad6c7",
+		"name": "Roulette",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Roulette",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tittle\": \"Ruleta 1\",\r\n    \"description\":\"Ruleta número 1\",\r\n    \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/masiv/roulette",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"masiv",
+						"roulette"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Open Roulette",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/masiv/roulette/47983186-d4be-4e1f-bfb3-a42b7fcf3dfd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"masiv",
+						"roulette",
+						"47983186-d4be-4e1f-bfb3-a42b7fcf3dfd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consult Roulette",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/masiv/roulette",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"masiv",
+						"roulette"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Bet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "user-id",
+						"value": "444444",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codeRoulette\":\"47983186-d4be-4e1f-bfb3-a42b7fcf3dfd\",\r\n    \"color\": \"RED\",\r\n    \"value\": 1500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/masiv/bet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"masiv",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Close Bet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/masiv/bet/47983186-d4be-4e1f-bfb3-a42b7fcf3dfd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"masiv",
+						"bet",
+						"47983186-d4be-4e1f-bfb3-a42b7fcf3dfd"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
