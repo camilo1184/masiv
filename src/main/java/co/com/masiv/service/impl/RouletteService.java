@@ -14,16 +14,18 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@AllArgsConstructor
 public class RouletteService implements IRouletteService {
 
   private RouletteRepository rouletteRepository;
+
+  public RouletteService(RouletteRepository rouletteRepository) {
+    this.rouletteRepository = rouletteRepository;
+  }
 
   @Override
   public String createRoulette(RouletteDto rouletteDto) {

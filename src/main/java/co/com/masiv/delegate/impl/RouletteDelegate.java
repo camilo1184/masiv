@@ -6,18 +6,20 @@ import co.com.masiv.model.Roulette;
 import co.com.masiv.service.IRouletteService;
 import java.util.List;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
 @Slf4j
 @Component
 public class RouletteDelegate implements IRouletteDelegate {
 
   private IRouletteService rouletteService;
+
+  public RouletteDelegate(IRouletteService rouletteService) {
+    this.rouletteService = rouletteService;
+  }
 
   @Override
   public ResponseEntity<String> createRoulette(RouletteDto rouletteDto) {

@@ -6,17 +6,19 @@ import co.com.masiv.delegate.IRouletteDelegate;
 import co.com.masiv.dto.RouletteDto;
 import co.com.masiv.model.Roulette;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(ResourceEndpoint.ROULETTE)
-@AllArgsConstructor
 public class RouletteController implements IRouletteController {
 
   private IRouletteDelegate rouletteDelegate;
+
+  public RouletteController(IRouletteDelegate rouletteDelegate) {
+    this.rouletteDelegate = rouletteDelegate;
+  }
 
   @Override
   public ResponseEntity<String> createRoulette(RouletteDto rouletteDto) {

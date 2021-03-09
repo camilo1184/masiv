@@ -6,16 +6,18 @@ import co.com.masiv.repository.BetRepository;
 import co.com.masiv.service.IBetService;
 import java.util.Date;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@AllArgsConstructor
 public class BetService implements IBetService {
 
   private BetRepository betRepository;
+
+  public BetService(BetRepository betRepository) {
+    this.betRepository = betRepository;
+  }
 
   @Override
   public String createBet(BetDto betDto) {
